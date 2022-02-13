@@ -11,7 +11,7 @@ git clone https://github.com/da-cali/victor
 cd victor
 ```
 
-### 2. Create conda conda environment and install dependencies:
+### 2. Create conda environment and install dependencies:
 
 ```sh
 conda create -n victor python=3.9
