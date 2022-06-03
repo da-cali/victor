@@ -1,6 +1,6 @@
 # Victor
 
-A sassy trash-talking Codenames bot (under development) in the likeness of his future arch-nemesis [VictoriousChocobo](https://github.com/VictoriousChocobo). This is a WORK IN PROGRESS, but if you want to try the prototype:
+A sassy trash-talking Codenames bot (trashing module under development) in the likeness of his future arch-nemesis [VictoriousChocobo](https://github.com/VictoriousChocobo). This is a WORK IN PROGRESS, but if you want to try the prototype:
 
 ### 0. Install [Anaconda](https://www.anaconda.com/products/individual).
 
@@ -31,7 +31,7 @@ python play.py
 Red agents' codenames:
 bite poetry television dancing fugue japan mediterranean bag
 
-Blue agents' codename:
+Blue agents' codenames:
 medical disrespectful toy lake purple wisdom smell eye 
 
 Bystanders' codenames:
