@@ -28,135 +28,102 @@ python play.py
 ### Example game.
 
 ```
-Red agents' codenames:
+Loading model...
+
+Please enter the codenames (separated by spaces).
+
+Red agents:
 bite poetry television dancing fugue japan mediterranean bag
 
-Blue agents' codenames:
-medical disrespectful toy lake purple wisdom smell eye 
+Blue agents:
+medical disrespectful toy lake purple wisdom smell eye
 
-Bystanders' codenames:
+Bystanders:
 lemon nugget destroyer tacky comic gorilla cheeseburger snow
 
-Assasin codename:
-black
+Assasin:
+guitar
 
----------- Red team turn. ----------
+---------- RED team turn ----------
 
-Red spymaster:
-Objective: 
-['dancing', 'fugue', 'poetry'] 
-Clue:
- poems
+RED spymaster:
+Objective: ['dancing', 'fugue', 'poetry'] 
+Clue: 'mazurka' for 3.
 
-Red operatives:
-Guess: poetry
-Correct guess.
+RED operatives:
 Guess: fugue
-Correct guess.
-Guess: comic
-Incorrect guess. End of turn.
-
----------- Blue team turn. ----------
-
-Blue spymaster:
-Objective: 
-['purple', 'smell'] 
-Clue:
- aroma
-
-Blue operatives:
-Guess: smell
-Correct guess.
-Guess: lemon
-Incorrect guess. End of turn.
-
----------- Red team turn. ----------
-
-Red spymaster:
-Objective: 
-['japan', 'mediterranean'] 
-Clue:
- europe
-
-Red operatives:
-Guess: japan
-Correct guess.
-Guess: mediterranean
-Correct guess.
-
----------- Blue team turn. ----------
-
-Blue spymaster:
-Objective: 
-['lake'] 
-Clue:
- river
-
-Blue operatives:
-Guess: lake
-Correct guess.
-
----------- Red team turn. ----------
-
-Red spymaster:
-Objective: 
-['bag', 'bite'] 
-Clue:
- wallet
-
-Red operatives:
-Guess: bag
-Correct guess.
-Guess: bite
-Correct guess.
-
----------- Blue team turn. ----------
-
-Blue spymaster:
-Objective: 
-['purple'] 
-Clue:
- pink
-
-Blue operatives:
-Guess: purple
-Correct guess.
-
----------- Red team turn. ----------
-
-Red spymaster:
-Objective: 
-['television'] 
-Clue:
- TV
-
-Red operatives:
-Guess: television
-Correct guess.
-
----------- Blue team turn. ----------
-
-Blue spymaster:
-Objective: 
-['disrespectful'] 
-Clue:
- insulting
-
-Blue operatives:
-Guess: disrespectful
-Correct guess.
-
----------- Red team turn. ----------
-
-Red spymaster:
-Objective: 
-['dancing'] 
-Clue:
- dancers
-
-Red operatives:
+✔️
 Guess: dancing
-Correct guess.
+✔️
+Guess: poetry
+✔️
+
+---------- BLUE team turn ----------
+
+BLUE spymaster:
+Objective: ['purple', 'smell'] 
+Clue: 'aroma' for 2.
+
+BLUE operatives:
+Guess: smell
+✔️
+Guess: lemon
+✖️
+
+---------- RED team turn ----------
+
+RED spymaster:
+Objective: ['japan', 'mediterranean'] 
+Clue: 'greece' for 2.
+
+RED operatives:
+Guess: japan
+✔️
+Guess: mediterranean
+✔️
+
+---------- BLUE team turn ----------
+
+BLUE spymaster:
+Objective: ['lake'] 
+Clue: 'river' for 1.
+
+BLUE operatives:
+Guess: lake
+✔️
+
+---------- RED team turn ----------
+
+RED spymaster:
+Objective: ['bag', 'bite'] 
+Clue: 'wallet' for 2.
+
+RED operatives:
+Guess: bag
+✔️
+Guess: bite
+✔️
+
+---------- BLUE team turn ----------
+
+BLUE spymaster:
+Objective: ['purple'] 
+Clue: 'pink' for 1.
+
+BLUE operatives:
+Guess: purple
+✔️
+
+---------- RED team turn ----------
+
+RED spymaster:
+Objective: ['television'] 
+Clue: 'TV' for 1.
+
+RED operatives:
+Guess: television
+✔️
+
 Red team wins.
 ```
 

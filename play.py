@@ -4,7 +4,7 @@ from spymaster import spymaster_clue
 from operative import operative_guesses
 
 # Load local version of model. Download and store otherwise.
-print("Loading model...")
+print("\nLoading model...")
 try:
     model = load("model.pkl")
 except Exception:
@@ -12,59 +12,60 @@ except Exception:
     dump(model, "model.pkl")
 
 # Initialize new game.
-red = input("\nEnter the red agents' codenames (separated by spaces).\n").split()
-blue = input("\nEnter the blue agents' codenames.\n").split()
-yellow = input("\nEnter the bystanders' codenames.\n").split()
-black = input("\nEnter the assasin's codename.\n").split()
+print("\nPlease enter the codenames (separated by spaces).")
+red = input("\nRed agents:\n").split()
+blue = input("\nBlue agents:\n").split()
+yellow = input("\nBystanders:\n").split()
+black = input("\nAssasin:\n").split()
 
 # Play.
 game_on = True
 while game_on:
-    for team in ["Red","Blue"]:
-        print(f"\n---------- {team} team turn. ----------")
-        print(f"\n{team} spymaster:")
-        if team == "Red":
+    for team in ["RED","BLUE"]:
+        print(f"\n---------- {team} team turn ----------\n\n{team} spymaster:")
+        if team == "RED":
             objective,clue = spymaster_clue(model,red,blue,yellow,black)
         else:
             objective,clue = spymaster_clue(model,blue,red,yellow,black)
-        print(f"Objective: \n{objective} \nClue:\n {clue}")
+        print(f"Objective: {objective} \nClue: '{clue}' for {len(objective)}.")
         print(f"\n{team} operatives:")
         guesses = operative_guesses(model,(red+blue+yellow+black),clue)
         for i in range(len(objective)):
             guess = guesses[i][1]
             print(f"Guess: {guess}")
             if guess in black:
-                print(f"Guess is assasin. {team} team loses.")
+                print(f"\n☠️ Assasin. \n{team} team loses.")
                 quit()
             elif guess in yellow:
                 yellow.remove(guess)
-                print("Incorrect guess. End of turn.")
+                print("✖️")
                 break
             else:
-                if team == "Red":
+                if team == "RED":
                     if guess in red:
-                        print("Correct guess.")
+                        print("✔️")
                         red.remove(guess)
                         if red == []:
-                            print("Red team wins.")
+                            print("\nRed team wins.")
                             quit()
                     else:
-                        print("Incorrect guess. End of turn.")
+                        print("✖️")
                         blue.remove(guess)
                         if blue == []:
-                            print("Blue team wins.")
+                            print("\nBlue team wins.")
                             quit()
+                        break
                 else:
                     if guess in blue:
-                        print("Correct guess.")
+                        print("✔️")
                         blue.remove(guess)
                         if blue == []:
-                            print("Blue team wins.")
+                            print("\nBlue team wins.")
                             quit()
                     else:
-                        print("Incorrect guess. End of turn.")
+                        print("✖️")
                         red.remove(guess)
                         if red == []:
-                            print("Red team wins.")
+                            print("\nRed team wins.")
                             quit()
-print("Game over.")
+                        break
