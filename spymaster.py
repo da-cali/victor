@@ -8,7 +8,7 @@ def spymaster_clue(model,ally_agents,opposite_agents,bystanders,assasin):
     # within the ally_agents and looking for related words to all of them.
     candidates = []
     MAX_WORDS_TO_CONSIDER = 100000
-    THRESH = 65
+    THRESH = 50
     for word in ally_agents:
         similar_words = model.most_similar(word,topn=MAX_WORDS_TO_CONSIDER)
         similar_words_within_set = [w for w,_ in similar_words if w in ally_agents]
