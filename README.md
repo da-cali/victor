@@ -19,7 +19,7 @@ conda activate victor
 conda env update -f environment.yml
 ```
 
-### 3. Run script.
+### 3. Run demo.
 
 ```sh
 python play.py
