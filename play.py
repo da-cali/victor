@@ -11,61 +11,47 @@ except Exception:
     model = downloader.load('word2vec-google-news-300')
     dump(model, "model.pkl")
 
-# Initialize new game.
+def play(t1,t1_name,t2,t2_name,b,a):
+    result = "Next turn."
+    print(f"\n--------- {t1_name} team turn ---------\n\n{t1_name} spymaster:")
+    objective,clue = spymaster_clue(model,t1,t2,b,a)
+    print(f"Objective: {objective} \nClue: '{clue}' for {len(objective)}.")
+    print(f"\n{t1_name} operatives:")
+    guesses = operative_guesses(model,(t1+t2+b+a),clue)
+    for i in range(len(objective)):
+        guess = guesses[i][1]
+        print(f"Guess: {guess}")
+        if guess in a:
+            result = f"{t1_name} team loses."
+            break
+        elif guess in b:
+            b.remove(guess)
+            print("✖️")
+            break
+        elif guess in t2:
+            print("✖️")
+            t2.remove(guess)
+            if t2 == []:
+                result = f"{t2_name} team wins."
+            break
+        else:
+            print("✔️")
+            t1.remove(guess)
+            if t1 == []:
+                result = f"{t1_name} team wins."
+                break
+            if len(objective)-1 == i:
+                break
+    if result == "Next turn.":
+        return play(t2,t2_name,t1,t1_name,b,a)
+    else:
+        return result
+
+# Play.
 print("\nPlease enter the codenames (separated by spaces).")
 red = input("\nRed agents:\n").split()
 blue = input("\nBlue agents:\n").split()
 yellow = input("\nBystanders:\n").split()
 black = input("\nAssasin:\n").split()
-
-# Play.
-game_on = True
-while game_on:
-    for team in ["RED","BLUE"]:
-        print(f"\n---------- {team} team turn ----------\n\n{team} spymaster:")
-        if team == "RED":
-            objective,clue = spymaster_clue(model,red,blue,yellow,black)
-        else:
-            objective,clue = spymaster_clue(model,blue,red,yellow,black)
-        print(f"Objective: {objective} \nClue: '{clue}' for {len(objective)}.")
-        print(f"\n{team} operatives:")
-        guesses = operative_guesses(model,(red+blue+yellow+black),clue)
-        for i in range(len(objective)):
-            guess = guesses[i][1]
-            print(f"Guess: {guess}")
-            if guess in black:
-                print(f"\n☠️ Assasin. \n{team} team loses.")
-                quit()
-            elif guess in yellow:
-                yellow.remove(guess)
-                print("✖️")
-                break
-            else:
-                if team == "RED":
-                    if guess in red:
-                        print("✔️")
-                        red.remove(guess)
-                        if red == []:
-                            print("\nRed team wins.")
-                            quit()
-                    else:
-                        print("✖️")
-                        blue.remove(guess)
-                        if blue == []:
-                            print("\nBlue team wins.")
-                            quit()
-                        break
-                else:
-                    if guess in blue:
-                        print("✔️")
-                        blue.remove(guess)
-                        if blue == []:
-                            print("\nBlue team wins.")
-                            quit()
-                    else:
-                        print("✖️")
-                        red.remove(guess)
-                        if red == []:
-                            print("\nRed team wins.")
-                            quit()
-                        break
+result = play(red,"RED",blue,"BLUE",yellow,black)
+print(f"\nGame over. {result}")
