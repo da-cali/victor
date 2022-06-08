@@ -1,6 +1,6 @@
 # Victor
 
-A Codenames bot (sassy trash-talking module under development). This is a WORK IN PROGRESS, but if you want to try the prototype:
+A Codenames bot. This is a WORK IN PROGRESS, but if you want to try the prototype:
 
 ### 0. Install [Anaconda](https://www.anaconda.com/products/individual).
 
