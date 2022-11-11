@@ -30,7 +30,8 @@ def play(t1_agents, t1_name, t2_agents, t2_name, bystanders, assasin):
         if guess in assasin:
             result, end_of_turn = f"☠️ Assasin. {t1_name} team loses.", True
         elif guess in bystanders:
-            bystanders.remove(guess), print("✖️ Bystander.")
+            bystanders.remove(guess)
+            print("✖️ Bystander.")
             end_of_turn = True
         elif guess in t2_agents:
             print(f"✖️ {t2_name} team agent.")
