@@ -23,30 +23,29 @@ def play(t1_agents, t1_name, t2_agents, t2_name, bystanders, assasin):
           + f"Clue: '{clue}' for {objective_size}."
           + f"\n{t1_name} operatives:")
     guesses = operative_guesses(model, (t1_agents + t2_agents + bystanders + assasin), clue)
-    for i in range(objective_size):
-        guess = guesses[i][1]
+    end_of_turn, ith_guess = False, 0
+    while not end_of_turn:
+        guess = guesses[ith_guess][1]
         print(f"Guess: {guess}")
         if guess in assasin:
-            result = f"☠️ Assasin. {t1_name} team loses."
-            break
+            result, end_of_turn = f"☠️ Assasin. {t1_name} team loses.", True
         elif guess in bystanders:
-            bystanders.remove(guess)
-            print("✖️")
-            break
+            bystanders.remove(guess), print("✖️ Bystander.")
+            end_of_turn = True
         elif guess in t2_agents:
-            print("✖️")
+            print(f"✖️ {t2_name} team agent.")
             t2_agents.remove(guess)
             if t2_agents == []:
                 result = f"{t2_name} team wins."
-            break
+            end_of_turn = True
         else:
-            print("✔️")
+            print("✔️ Correct!")
             t1_agents.remove(guess)
             if t1_agents == []:
-                result = f"{t1_name} team wins."
-                break
-            if objective_size - 1 == i:
-                break
+                result, end_of_turn = f"{t1_name} team wins.", True
+            if objective_size - 1 == ith_guess:
+                end_of_turn = True
+        ith_guess += 1
     if result == "Next turn.":
         return play(t2_agents, t2_name, t1_agents, t1_name, bystanders, assasin)
     else:
