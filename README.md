@@ -2,7 +2,7 @@
 
 A Codenames bot. This is a WORK IN PROGRESS, but if you want to try the prototype:
 
-### 0. Install [Anaconda](https://www.anaconda.com/products/individual).
+### 0. Install [Poetry](https://python-poetry.org/).
 
 ### 1. Clone repository:
 
@@ -11,18 +11,16 @@ git clone https://github.com/da-cali/victor
 cd victor
 ```
 
-### 2. Create conda environment and install dependencies:
+### 2. Install dependencies:
 
 ```sh
-conda create -n victor python=3.9
-conda activate victor
-conda env update -f environment.yml
+poetry install
 ```
 
 ### 3. Run demo.
 
 ```sh
-python play.py
+poetry run python play.py
 ```
 
 ### Example game.
